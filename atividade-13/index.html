@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>atividade-13</title>
+    <script src="/src/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      div {
+        display: flex;
+        gap: 0.5em;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+    </style>
+  </head>
+  <body class="flex flex-col items-center gap-4 p-4">
+    <div>
+      <input id="input" type="text" class="border-1 rounded p-4">
+      <button id="bttnAdd" class="border-1 border-black rounded p-4 text-white bg-blue-400">Adicionar</button>
+    </div>
+    <ul id="list"></ul>
+  </body>
+</html>
