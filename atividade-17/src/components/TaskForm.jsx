@@ -1,24 +1,31 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import axios from "axios"
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import axios from 'axios'
 
 export default function TaskForm() {
-const queryClient = useQueryClient()
+  const queryClient = useQueryClient()
 
-    const mutation = useMutation({
-        mutationFn: async () => {
-            const post = await axios.post()
-        },
-        onSuccess: () => {
-            queryClient.invalidateQueries(['tasks'])
-        }
-    })
-    
+  const mutation = useMutation({
+    mutationFn: (newTask) => {
+      return axios.post('https://jsonplaceholder.typicode.com/todos', newTask)
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(['tasks'])
+    },
+  })
+
   return (
     <>
-    <form>
-        <input type="text" />
-        <input type="submit" />
-    </form>
+      <button
+        onClick={(e) => {
+          e.preventDefault()
+          mutation.mutate({
+            title: 'New Task',
+            completed: false,
+          })
+        }}
+      >
+        New Task
+      </button>
     </>
   )
 }
